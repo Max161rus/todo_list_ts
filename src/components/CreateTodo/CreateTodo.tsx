@@ -14,8 +14,8 @@ const CreateTodo = () => {
 
   const data = useSelector(({ data }: any) => data.todoList);
 
-  const createTodo = (e: any) => {
-    if (e.key === 'Enter' && textTodo !== '') {
+  const createTodo = () => {
+    if (textTodo !== '') {
       dispach(todoActions.addTodo(textTodo.trim()));
       setTextTodo('');
     }
@@ -23,7 +23,7 @@ const CreateTodo = () => {
 
   return (
     <CreatTodoWrapper>
-      <Button>
+      <Button onClick={() => dispach(todoActions.toggleActivityStatusAllTodo())}>
         V
       </Button>
 
@@ -31,11 +31,15 @@ const CreateTodo = () => {
         placeholder="Введите событие"
         autoFocus
         value={textTodo}
-        onKeyDown={(e: any) => { createTodo(e) }}
+        onKeyDown={(e: any) => {
+          if (e.key === 'Enter') {
+            createTodo();
+          }
+        }}
         onChange={(e: any) => setTextTodo(e.target.value)}
       />
 
-      <Button onClick={(e: any) => { createTodo(e) }}>
+      <Button onClick={createTodo}>
         +
       </Button>
     </CreatTodoWrapper>

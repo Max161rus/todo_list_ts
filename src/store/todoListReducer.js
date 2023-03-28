@@ -16,9 +16,28 @@ export const todoListReducer = createSlice({
       }
       store.todoList = [newTodo, ...store.todoList];
     },
-    switchingActivityItem: (store, {payload}) => {
+
+    switchingActivityItem: (store, { payload }) => {
       const indexTodo = store.todoList.findIndex(todo => todo.id === payload);
       store.todoList[indexTodo].activeFlag = !store.todoList[indexTodo].activeFlag;
+    },
+
+    saveEditedCase: (store, { payload }) => {
+      const indexTodo = store.todoList.findIndex(todo => todo.id === payload.id);
+      store.todoList[indexTodo].todoText = payload.text;
+    },
+
+    toggleActivityStatusAllTodo: (store) => {
+      const attributeActiveTodo = store.todoList.some(todo => todo.activeFlag);
+      store.todoList = store.todoList.map(todo => ({
+        ...todo,
+        activeFlag: !attributeActiveTodo
+      }));
+    },
+    
+    deleteTodo: (store, { payload }) => {
+      const indexTodo = store.todoList.findIndex(todo => todo.id = payload);
+      store.todoList.splice([indexTodo], 1);
     }
   }
 

@@ -5,8 +5,8 @@ export default styled.main`
   flex-direction: column;
   align-items: center;
   max-width: 650px;
-  min-width: 320px;
-  width: 40%;
+  min-width: 300px;
+  width: 90%;
   background-color: black;
   margin-top: 100px;
 `; 
