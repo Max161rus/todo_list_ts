@@ -2,14 +2,15 @@ import React from 'react';
 import TodoItem from './TodoItem';
 import { TodoListWrapper } from "./TodoList.styled";
 import { useSelector } from 'react-redux';
+import { filteredListAndActiveTodoCounter } from '../store/todoListReducer';
 
 const TodoList = () => {
 
-  const data = useSelector(({ data }: any) => data.todoList);
+  const { filteredTodo } = useSelector(filteredListAndActiveTodoCounter);
 
   return (
     <TodoListWrapper>
-      {data.map((todo: any) => <TodoItem key={todo.id} todo={todo} />)}
+      {filteredTodo.map((todo: any) => <TodoItem key={todo.id} todo={todo} />)}
     </TodoListWrapper>
   )
 };

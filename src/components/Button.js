@@ -18,18 +18,4 @@ export const Button = styled.button`
   :active {
     filter: brightness(70%);
   }
-
-  .button-filter {
-    font-size: 15px;
-    width: auto;
-  }
-  
-  .button-delete {
-    background-color: red;
-  }
-  
-  .button-complete {
-    background-color: yellow;
-    color: black;
-  }
 `;

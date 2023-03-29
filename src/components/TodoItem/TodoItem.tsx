@@ -39,7 +39,7 @@ const TodoItem = ({ todo }: any) => {
         className={classNames({ "button-complete": !todo.activeFlag })}
         onClick={() => dispach(todoActions.switchingActivityItem(todo.id))}
       >
-        {todo.isActive ? "Act" : "Com"}
+        {todo.activeFlag ? "Act" : "Com"}
       </Button>
 
       {editing ?

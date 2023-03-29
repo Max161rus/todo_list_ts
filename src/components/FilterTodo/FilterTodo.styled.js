@@ -16,4 +16,17 @@ export const FilterTodoWrapper = styled.section`
     width: auto;
     margin-left: 5px;
   }
+  
+  .button-delete {
+    background-color: red;
+  }
+  
+  .button-complete {
+    background-color: yellow;
+    color: black;
+  }
+
+  .button-active {
+		box-shadow: 0 0 5px 2px red;
+	}
 `;
