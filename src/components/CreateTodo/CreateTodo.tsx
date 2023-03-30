@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { todoActions } from '../../store/todoListReducer';
 import { Input } from '../Input';
@@ -11,8 +11,6 @@ const CreateTodo = () => {
   const [textTodo, setTextTodo] = useState('');
 
   const dispach = useDispatch();
-
-  const data = useSelector(({ data }: any) => data.todoList);
 
   const createTodo = () => {
     if (textTodo !== '') {

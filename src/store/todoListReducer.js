@@ -2,12 +2,13 @@ import { createSlice, createSelector } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from 'uuid';
 
 import { FILTER_NAMES } from '../utils/constants';
+import { todoListStored, filterStored } from "../utils/storage";
 
 export const todoListReducer = createSlice({
   name: 'todoSlise',
   initialState: {
-    todoList: [],
-    todoFilter: "All"
+    todoList: todoListStored.getStorageValue(),
+    todoFilter: filterStored.getStorageValue()
   },
   reducers: {
     addTodo: (store, { payload }) => {

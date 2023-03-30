@@ -2,10 +2,11 @@ import styled from 'styled-components';
 
 export const TodoItemWrapper = styled.div`
 
+  display: grid;
+  grid-template-columns: 1fr 15fr 1fr;
+  gap: 10px;
   width: 100%;
   min-height: 40px;
-  display: flex;
-  justify-content: space-between;
   margin-top: 5px;
   margin-bottom: 5px;
 
@@ -26,13 +27,13 @@ export const TodoItemWrapper = styled.div`
   .todo-text {
     display: flex;
     align-items: center;
-    width: 80%;
-    padding-left: 10px;
+    width: 100%;
     word-break: break-all;
   }
   
   .todo-text--complete {
     text-decoration: line-through;
   }
-
 `;
+
+  
