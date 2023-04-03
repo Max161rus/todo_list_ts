@@ -1,9 +1,9 @@
 import React from 'react';
 
-import TodoItem from './TodoItem';
-import { TodoListWrapper } from "./TodoList.styled";
+import TodoItem from '../TodoItem/TodoItem';
+import { TodoListWrapper } from './TodoList.styled';
 import { useSelector } from 'react-redux';
-import { filteredListAndActiveTodoCounter } from '../store/todoListReducer';
+import { filteredListAndActiveTodoCounter } from '../../store/todoListReducer';
 
 const TodoList = () => {
 

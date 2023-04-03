@@ -6,14 +6,21 @@ import { Button } from "../Button";
 import { FilterTodoWrapper } from "./FilterTodo.styled";
 import { FILTER_NAMES } from "../../utils/constants";
 import { todoActions, filteredListAndActiveTodoCounter } from "../../store/todoListReducer";
+import { RootState } from "../../store/store";
 
 const FilterTodo = () => {
 
-  const filterName = useSelector(({ data }: any) => data.todoFilter);
+  const filterName = useSelector(({ data }: RootState) => data.todoFilter);
+
+  const todoItemCount = useSelector(({ data }: RootState) => data.todoList.length);
 
   const { counActiveTodos } = useSelector(filteredListAndActiveTodoCounter);
 
   const dispach = useDispatch();
+
+  if (!todoItemCount) {
+    return null;
+  }
 
   return (
     <FilterTodoWrapper>

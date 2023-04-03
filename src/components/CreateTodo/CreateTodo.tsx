@@ -5,12 +5,13 @@ import { todoActions } from '../../store/todoListReducer';
 import { Input } from '../Input';
 import { Button } from '../Button';
 import { CreatTodoWrapper } from './CreateTodo.styled';
+import { AppDispatch } from '../../store/store';
 
 const CreateTodo = () => {
 
   const [textTodo, setTextTodo] = useState('');
 
-  const dispach = useDispatch();
+  const dispach = useDispatch<AppDispatch>();
 
   const createTodo = () => {
     if (textTodo !== '') {

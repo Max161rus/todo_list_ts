@@ -1,8 +1,11 @@
-import { createSlice, createSelector } from "@reduxjs/toolkit";
+import { createSlice, createSelector, PayloadAction } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from 'uuid';
 
 import { FILTER_NAMES } from '../utils/constants';
 import { todoListStored, filterStored } from "../utils/storage";
+
+// import { Todo } from "../models/Todo";
+
 
 export const todoListReducer = createSlice({
   name: 'todoSlise',
@@ -11,7 +14,7 @@ export const todoListReducer = createSlice({
     todoFilter: filterStored.getStorageValue()
   },
   reducers: {
-    addTodo: (store, { payload }) => {
+    addTodo: (store, { payload }: PayloadAction<string>) => {
       const newTodo = {
         todoText: payload,
         activeFlag: true,
@@ -20,46 +23,46 @@ export const todoListReducer = createSlice({
       store.todoList = [newTodo, ...store.todoList];
     },
 
-    switchingActivityItem: (store, { payload }) => {
-      const indexTodo = store.todoList.findIndex(todo => todo.id === payload);
+    switchingActivityItem: (store, { payload }: PayloadAction<string>) => {
+      const indexTodo = store.todoList.findIndex((todo: any) => todo.id === payload);
       store.todoList[indexTodo].activeFlag = !store.todoList[indexTodo].activeFlag;
     },
 
-    saveEditedCase: (store, { payload }) => {
-      const indexTodo = store.todoList.findIndex(todo => todo.id === payload.id);
+    saveEditedCase: (store, { payload }: PayloadAction<{ text: string; id: string }>) => {
+      const indexTodo = store.todoList.findIndex((todo: any) => todo.id === payload.id);
       store.todoList[indexTodo].todoText = payload.text;
     },
 
     toggleActivityStatusAllTodo: (store) => {
-      const attributeActiveTodo = store.todoList.some(todo => todo.activeFlag);
-      store.todoList = store.todoList.map(todo => ({
+      const attributeActiveTodo = store.todoList.some((todo: any) => todo.activeFlag);
+      store.todoList = store.todoList.map((todo: any) => ({
         ...todo,
         activeFlag: !attributeActiveTodo
       }));
     },
 
-    deleteTodo: (store, { payload }) => {
-      const indexTodo = store.todoList.findIndex(todo => todo.id = payload);
+    deleteTodo: (store, { payload }: PayloadAction<string>) => {
+      const indexTodo = store.todoList.findIndex((todo: any) => todo.id = payload);
       store.todoList.splice([indexTodo], 1);
     },
 
-    setFilter: (store, { payload }) => {
+    setFilter: (store, { payload }: PayloadAction<string>) => {
       store.todoFilter = payload;
     },
 
     clearCompleteTodo: (store) => {
-      store.todoList = store.todoList.filter(todo => todo.activeFlag);
+      store.todoList = store.todoList.filter((todo: any) => todo.activeFlag);
     }
   }
 });
 
 export const filteredListAndActiveTodoCounter = createSelector(
-  ({ data }) => data.todoList,
-  ({ data }) => data.todoFilter,
+  ({ data }: any) => data.todoList,
+  ({ data }: any) => data.todoFilter,
   (todoList, todoFilter) => {
     let counActiveTodos = 0;
 
-    const filteredTodo = todoList.filter(todo => {
+    const filteredTodo = todoList.filter((todo: any) => {
       if (todo.activeFlag) {
         counActiveTodos++;
       }
