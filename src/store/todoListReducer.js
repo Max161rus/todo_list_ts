@@ -51,7 +51,6 @@ export const todoListReducer = createSlice({
       store.todoList = store.todoList.filter(todo => todo.activeFlag);
     }
   }
-
 });
 
 export const filteredListAndActiveTodoCounter = createSelector(

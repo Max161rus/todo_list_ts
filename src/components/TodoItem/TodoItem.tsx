@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import classNames from "classnames";
+import { useDispatch } from "react-redux";
 
 import { Button } from "../Button";
 import { Input } from "../Input";
 import { TodoItemWrapper } from "./TodoItem.styled";
-import { useDispatch, useSelector } from "react-redux";
 import { todoActions } from "../../store/todoListReducer";
 
 const TodoItem = ({ todo }: any) => {
@@ -29,7 +29,7 @@ const TodoItem = ({ todo }: any) => {
   };
 
   const cancelEditingTodo = () => {
-    setEditing(todo.todoText);
+    setText(todo.todoText);
     setEditing(false);
   };
 
@@ -57,7 +57,7 @@ const TodoItem = ({ todo }: any) => {
                 cancelEditingTodo();
               }
             }}
-            onBlur={cancelEditingTodo}
+            onBlur={saveEditingTodo}
             value={text}
           />
         ) : (
