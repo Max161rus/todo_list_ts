@@ -1,22 +1,21 @@
 import React from "react";
 import classNames from "classnames";
-import { useSelector, useDispatch } from "react-redux";
 
 import { Button } from "../Button";
 import { FilterTodoWrapper } from "./FilterTodo.styled";
 import { FILTER_NAMES } from "../../utils/constants";
 import { todoActions, filteredListAndActiveTodoCounter } from "../../store/todoListReducer";
-import { RootState } from "../../store/store";
+import { useAppSelector, useAppDispatch } from "../../hooks/hooks";
 
 const FilterTodo = () => {
 
-  const filterName = useSelector(({ data }: RootState) => data.todoFilter);
+  const filterName = useAppSelector(({ data }) => data.todoFilter);
 
-  const todoItemCount = useSelector(({ data }: RootState) => data.todoList.length);
+  const todoItemCount = useAppSelector(({ data }) => data.todoList.length);
 
-  const { counActiveTodos } = useSelector(filteredListAndActiveTodoCounter);
+  const { counActiveTodos } = useAppSelector(filteredListAndActiveTodoCounter);
 
-  const dispach = useDispatch();
+  const dispach = useAppDispatch();
 
   if (!todoItemCount) {
     return null;

@@ -4,6 +4,7 @@ import TodoItem from '../TodoItem/TodoItem';
 import { TodoListWrapper } from './TodoList.styled';
 import { useSelector } from 'react-redux';
 import { filteredListAndActiveTodoCounter } from '../../store/todoListReducer';
+import { Todo } from "../../models/Todo";
 
 const TodoList = () => {
 
@@ -11,7 +12,7 @@ const TodoList = () => {
 
   return (
     <TodoListWrapper>
-      {filteredTodo.map((todo: any) => <TodoItem key={todo.id} todo={todo} />)}
+      {filteredTodo.map((todo: Todo) => <TodoItem key={todo.id} todo={todo} />)}
     </TodoListWrapper>
   )
 };

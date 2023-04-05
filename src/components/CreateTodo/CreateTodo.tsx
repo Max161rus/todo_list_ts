@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 
 import { todoActions } from '../../store/todoListReducer';
 import { Input } from '../Input';
 import { Button } from '../Button';
 import { CreatTodoWrapper } from './CreateTodo.styled';
-import { AppDispatch } from '../../store/store';
+import { useAppDispatch } from "../../hooks/hooks";
 
 const CreateTodo = () => {
 
   const [textTodo, setTextTodo] = useState('');
 
-  const dispach = useDispatch<AppDispatch>();
+  const dispach = useAppDispatch();
 
   const createTodo = () => {
     if (textTodo !== '') {

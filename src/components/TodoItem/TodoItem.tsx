@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import classNames from "classnames";
-import { useDispatch } from "react-redux";
 
 import { Button } from "../Button";
 import { Input } from "../Input";
 import { TodoItemWrapper } from "./TodoItem.styled";
 import { todoActions } from "../../store/todoListReducer";
+import { useAppDispatch } from "../../hooks/hooks";
 
 const TodoItem = ({ todo }: any) => {
 
@@ -13,7 +13,7 @@ const TodoItem = ({ todo }: any) => {
 
   const [editing, setEditing] = useState(false);
 
-  const dispach = useDispatch();
+  const dispach = useAppDispatch();
 
   const saveEditingTodo = () => {
     const newText = text.trim();
