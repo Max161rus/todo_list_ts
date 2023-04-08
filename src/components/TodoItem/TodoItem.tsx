@@ -6,8 +6,13 @@ import { Input } from "../Input";
 import { TodoItemWrapper } from "./TodoItem.styled";
 import { todoActions } from "../../store/todoListReducer";
 import { useAppDispatch } from "../../hooks/hooks";
+import { Todo } from "../../models/Todo";
 
-const TodoItem = ({ todo }: any) => {
+interface TodoType {
+  todo: Todo;
+}
+
+const TodoItem = ({ todo }: TodoType) => {
 
   const [text, setText] = useState(todo.todoText);
 
@@ -46,11 +51,11 @@ const TodoItem = ({ todo }: any) => {
         (
           <Input
             autoFocus
-            onChange={(e: any) => {
+            onChange={(e) => {
               const newText = e.target.value.trimStart();
               setText(newText);
             }}
-            onKeyDown={(e: any) => {
+            onKeyDown={(e) => {
               if (e.key === 'Enter') {
                 saveEditingTodo();
               } else if (e.key === 'Escape') {

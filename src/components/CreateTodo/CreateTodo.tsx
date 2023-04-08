@@ -29,12 +29,12 @@ const CreateTodo = () => {
         placeholder="Введите событие"
         autoFocus
         value={textTodo}
-        onKeyDown={(e: any) => {
+        onKeyDown={(e) => {
           if (e.key === 'Enter') {
             createTodo();
           }
         }}
-        onChange={(e: any) => setTextTodo(e.target.value)}
+        onChange={(e) => setTextTodo(e.target.value)}
       />
 
       <Button onClick={createTodo}>

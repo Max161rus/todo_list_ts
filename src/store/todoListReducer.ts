@@ -11,6 +11,10 @@ interface TodoListState {
   todoFilter: string;
 }
 
+interface FullStore {
+  data: TodoListState;
+}
+
 const initialState: TodoListState = {
   todoList: todoListStored.getStorageValue(),
   todoFilter: filterStored.getStorageValue()
@@ -63,8 +67,8 @@ export const todoListReducer = createSlice({
 });
 
 export const filteredListAndActiveTodoCounter = createSelector(
-  ({ data }: any) => data.todoList,
-  ({ data }: any) => data.todoFilter,
+  ({ data }: FullStore) => data.todoList,
+  ({ data }: FullStore) => data.todoFilter,
   (todoList, todoFilter) => {
     let counActiveTodos = 0;
 
