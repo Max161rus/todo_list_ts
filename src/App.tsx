@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from "./hooks/hooks";
 
 import TodoWrapper from './components/TodoWrapper';
 import CreateTodo from './components/CreateTodo';
@@ -10,8 +10,8 @@ import { todoListStored, filterStored } from "./utils/storage";
 
 function App() {
 
-  const data = useSelector(({ data }: any) => data.todoList);
-  const filterValue = useSelector(({ data }: any) => data.todoFilter);
+  const data = useAppSelector(({ data }) => data.todoList);
+  const filterValue = useAppSelector(({ data }) => data.todoFilter);
 
   useEffect(() => {
     todoListStored.setStorageValue(data);
